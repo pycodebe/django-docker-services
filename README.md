@@ -29,5 +29,7 @@ Navigate to to http://127.0.0.1:8000
 ## Environment variables
 Create an .env file and and store it in app/ next to the /settings folder
 It should contain:
+```
 SECRET_KEY=<your secret key>
 INTERNAL_IPS=<your IP for the debug toolbar>
+```
