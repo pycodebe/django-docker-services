@@ -1,13 +1,8 @@
 import os
-import environ
+
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
-
-SECRET_KEY = env('SECRET_KEY')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -16,14 +11,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
     'rest_framework',
     'app_1',
-]
-
-# |--#### used by the debug toolbar
-INTERNAL_IPS = [
-    env('INTERNAL_IPS'),
 ]
 
 MIDDLEWARE = [
@@ -34,7 +23,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'app.urls'
