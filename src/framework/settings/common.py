@@ -1,8 +1,12 @@
-import os
-
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+SECRET_KEY = 'fake_secret_key'
+
+DEBUG = True
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', ]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -12,7 +16,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'app_1',
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -25,7 +29,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'app.urls'
+ROOT_URLCONF = 'framework.urls'
 
 TEMPLATES = [
     {
@@ -43,7 +47,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'app.wsgi.application'
+WSGI_APPLICATION = 'framework.wsgi.application'
 
 DATABASES = {
     'default': {
@@ -77,7 +81,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/' 
-STATIC_ROOT = os.path.join(BASE_DIR,'static/') 
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+STATIC_ROOT = './static/'
+MEDIA_ROOT = './media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
