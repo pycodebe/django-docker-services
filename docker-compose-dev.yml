@@ -2,7 +2,7 @@ version: '3.2'
 
 services:
   python:
-    container_name: django
+    container_name: python
     build:
       context: .
       dockerfile: 
@@ -13,5 +13,15 @@ services:
       - DJANGO_SETTINGS_MODULE=framework.settings.development
     volumes:
       - ./src:/src
+    expose:
+      - "8000"
+  nginx:
+    container_name: nginx
+    build:
+      context: .
+      dockerfile:
+        docker/dev/nginx/Dockerfile
     ports:
-      - "8001:8000"
+      - "80:80"
+    depends_on:
+      - python
