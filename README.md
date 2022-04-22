@@ -33,3 +33,8 @@ It should contain:
 SECRET_KEY=<your secret key>
 INTERNAL_IPS=<your IP for the debug toolbar>
 ```
+
+## Reference
+Serving the static files http://whitenoise.evans.io/en/stable/
+WSGI HTTP Server https://gunicorn.org/
+Django Debug Toolbar https://django-debug-toolbar.readthedocs.io/en/latest/

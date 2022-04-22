@@ -25,3 +25,5 @@ LOGGING = {
         },
     },
 }
+
+MIDDLEWARE += ['whitenoise.middleware.WhiteNoiseMiddleware',]
