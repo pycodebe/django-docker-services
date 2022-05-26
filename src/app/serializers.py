@@ -1,8 +1,8 @@
 from rest_framework import serializers
 
-from .models import Hero
+from .models import Car
 
-class HeroSerializer(serializers.HyperlinkedModelSerializer):
+class CarSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Hero
-        fields = ('name', 'alias')
+        model = Car
+        fields = ('model', 'brand')
