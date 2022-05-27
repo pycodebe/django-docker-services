@@ -5,10 +5,11 @@ channels:
 dependencies:
   - python=3.7.*
   - django>=3.2.*, <4.0
-  - django-environ
+  - ndjango-enviro
   - django-debug-toolbar
   - djangorestframework
   - whitenoise
+  - cx_oracle-8.3.*
   - pip
   - pip:
     - gunicorn

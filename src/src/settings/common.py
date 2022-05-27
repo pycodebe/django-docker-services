@@ -1,12 +1,15 @@
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'fake_secret_key'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'fake_secret_key')
 
-DEBUG = True
+DEBUG = bool(int(os.environ.get('DEBUG', 1)),)
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost',]
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS'),]
+
+INTERNAL_IPS = [os.environ.get('INTERNAL_IPS'),]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -31,6 +34,15 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'src.urls'
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': os.environ.get('ORACLE_NAME'),
+        'USER': os.environ.get('ORACLE_USERNAME'),
+        'PASSWORD': os.environ.get('ORACLE_PASSWORD')
+    }
+}
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -47,14 +59,9 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'src.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
