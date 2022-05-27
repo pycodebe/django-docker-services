@@ -1,0 +1,22 @@
+version: '3.2'
+
+services:
+  django:
+    container_name: django
+    build:
+      context: .
+      dockerfile: docker/dev/python/Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ./src:/src
+    networks:
+      - dbnet
+    ports:
+      - "8000:8000"
+
+networks:
+  dbnet:
+    external: true
+    name: public
+  
